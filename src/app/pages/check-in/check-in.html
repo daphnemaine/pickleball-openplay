@@ -1,1 +1,10 @@
 <p>check-in works!</p>
+<app-player-form
+    (save)="onSave($event)">
+</app-player-form>
+
+<app-player-table
+    [players]="players$ | async"
+    (delete)="onDelete($event)"
+    (edit)="onEdit($event)">
+</app-player-table>

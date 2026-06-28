@@ -1,1 +1,62 @@
-<p>player-table works!</p>
+@if(players?.length){
+
+<table>
+
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Skill Level</th>
+            <th>Checked In</th>
+            <th>Games Played</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @for(player of players; track player.id){
+
+        <tr>
+
+            <td>{{ player.name }}</td>
+
+            <td>{{ player.skillLevel }}</td>
+
+            <td>
+                <input
+                    type="checkbox"
+                    [checked]="player.checkedIn"
+                    (change)="onCheckInChanged(player)">
+            </td>
+
+            <td>{{ player.gamesPlayed }}</td>
+
+            <td>
+
+                <button
+                    type="button"
+                    (click)="onEdit(player)">
+                    Edit
+                </button>
+
+                <button
+                    type="button"
+                    (click)="onDelete(player.id)">
+                    Delete
+                </button>
+
+            </td>
+
+        </tr>
+
+        }
+
+    </tbody>
+
+</table>
+
+} @else {
+
+<p>No players have been added yet.</p>
+
+}

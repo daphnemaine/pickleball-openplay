@@ -20,6 +20,7 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-player-form',
+  standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './player-form.component.html',
   styleUrl: './player-form.component.scss',
@@ -61,7 +62,7 @@ export class PlayerFormComponent implements OnChanges {
   }
 
   onSubmit(): void {
-    if (this.form.valid) {
+    if (this.form.invalid) {
       this.form.markAllAsTouched();
       return;
     }
@@ -82,5 +83,7 @@ export class PlayerFormComponent implements OnChanges {
   onCancel(): void {
     this.cancel.emit();
   }
+
+
 
 }
