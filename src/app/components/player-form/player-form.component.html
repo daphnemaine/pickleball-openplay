@@ -1,0 +1,74 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit">
+
+  <div class="form-group">
+    <label>Name</label>
+
+    <input
+      type="text"
+      formControlName="name"
+      placeholder="Enter player name">
+
+    @if(form.controls['name'].invalid &&
+        form.controls['name'].touched){
+
+      <small>Name is required.</small>
+
+    }
+
+  </div>
+
+  <div class="form-group">
+
+    <label>Skill Level</label>
+
+    <select formControlName="skillLevel">
+
+      @for(level of skillLevels; track level){
+
+        <option [value]="level">
+          {{ level }}
+        </option>
+
+      }
+
+    </select>
+
+  </div>
+
+  <div class="form-group">
+
+    <label>
+
+      <input
+        type="checkbox"
+        formControlName="checkedIn">
+
+      Checked In
+
+    </label>
+
+  </div>
+
+  <div class="actions">
+
+    <button type="submit">
+
+      {{ player ? 'Update Player' : 'Add Player' }}
+
+    </button>
+
+    @if(player){
+
+      <button
+        type="button"
+        (click)="onCancel()">
+
+        Cancel
+
+      </button>
+
+    }
+
+  </div>
+
+</form>
