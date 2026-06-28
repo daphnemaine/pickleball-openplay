@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   templateUrl: './queue.html',
   styleUrl: './queue.scss',
 })
-export class Queue {
+export class QueueComponent {
 
 }
